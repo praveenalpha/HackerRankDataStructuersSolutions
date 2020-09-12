@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the timeConversion function below.
+ */
+string timeConversion(string& s) {
+    int len = s.length();
+    string ans = "";
+    if(s[len-2] == 'A')
+    {
+        char first = s[0];
+        char second = s[1];        
+        if(first == '1' && second == '2'){
+            ans += "00";
+            for(int i=2;i<len-2;++i)
+            ans += s[i];
+            return ans;
+        }
+        for(int i=0;i<len-2;++i)
+            ans += s[i];
+        return ans;
+    }
+    char first = s[0];
+    char second = s[1];
+    if(first == '1' && second == '2'){
+            // ans += "00";
+            for(int i=0;i<len-2;++i)
+            ans += s[i];
+            return ans;
+        }
+    int num = (first - '0')* 10 + (second - '0');
+    num += 12;
+    ans += to_string(num);
+    for(int i=2;i<len-2;++i)
+        ans += s[i];
+    return ans;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = timeConversion(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
